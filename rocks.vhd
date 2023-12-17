@@ -15,7 +15,6 @@ entity rocks is
         --game variables
         rock_speed : IN STD_LOGIC_VECTOR (10 DOWNTO 0); -- rock speed
         rock_start_x : IN STD_LOGIC_VECTOR (10 DOWNTO 0); -- initial rock x-position
-        game_on : IN STD_LOGIC; -- is game on?
 
         --sending back up for draw information
         rock_x_out, rock_y_out : OUT STD_LOGIC_VECTOR (10 DOWNTO 0); -- rock x-position, rock y-position
