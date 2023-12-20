@@ -29,7 +29,6 @@ ARCHITECTURE Behavioral OF bat_n_ball IS
         v_sync : IN STD_LOGIC;
         rock_speed : IN STD_LOGIC_VECTOR (10 DOWNTO 0); 
         rock_start_x : IN STD_LOGIC_VECTOR (10 DOWNTO 0);
-        game_on : IN STD_LOGIC;
         rock_x_out, rock_y_out : OUT STD_LOGIC_VECTOR (10 DOWNTO 0); 
         rock_size : OUT STD_LOGIC_VECTOR (10 DOWNTO 0) 
     );
@@ -42,7 +41,7 @@ ARCHITECTURE Behavioral OF bat_n_ball IS
     -- GAME INFORMATION
     SIGNAL rock_on : STD_LOGIC; -- indicates whether rock is at current pixel position
     SIGNAL car_on : STD_LOGIC; -- indicates whether car at over current pixel position
-    SIGNAL game_on : STD_LOGIC := '0'; -- indicates whether rock is in play
+    SIGNAL game_on : STD_LOGIC; -- indicates whether rock is in play
     SIGNAL counter : STD_LOGIC_VECTOR(16 downto 0) := (OTHERS => '0'); -- Score, the amount of VGA frames you've been in the game divided 
 
     -- CAR vertical position
