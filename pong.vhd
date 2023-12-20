@@ -15,10 +15,10 @@ ENTITY pong IS
         ADC_SCLK : OUT STD_LOGIC;
         ADC_SDATA1 : IN STD_LOGIC;
         ADC_SDATA2 : IN STD_LOGIC;
-        btn0 : IN STD_LOGIC; -- button to initiate serve
+        start_game : IN STD_LOGIC; -- button to initiate serve
         
         --MUST BE 4 Downto 0
-        raw_ball_speed : IN STD_LOGIC_VECTOR (4 downto 0); -- made as 10 downto 0 to avoid type error in bat_n_ball
+        raw_rock_speed : IN STD_LOGIC_VECTOR (4 downto 0); -- made as 10 downto 0 to avoid type error in bat_n_ball
         
         --DISPLAY
 		anode : OUT STD_LOGIC_VECTOR (7 DOWNTO 0); -- Display ID
@@ -65,12 +65,12 @@ ARCHITECTURE Behavioral OF pong IS
             pixel_row : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
             pixel_col : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
             car_x : IN STD_LOGIC_VECTOR (10 DOWNTO 0);
-            serve : IN STD_LOGIC;
+            start_game : IN STD_LOGIC;
             red : OUT STD_LOGIC;
             green : OUT STD_LOGIC;
             blue : OUT STD_LOGIC;
             
-            raw_ball_speed : IN STD_LOGIC_VECTOR(4 downto 0); -- added
+            raw_rock_speed : IN STD_LOGIC_VECTOR(4 downto 0); -- added
             score : OUT STD_LOGIC_VECTOR(7 downto 0) -- added
         );
     END COMPONENT;
@@ -108,7 +108,7 @@ BEGIN
     ADC_CS <= sample_clk;
     -- Multiplies ADC output (0-4095) by 5/32 to give bat position (0-640)
     --batpos <= ('0' & adout(11 DOWNTO 3)) + adout(11 DOWNTO 5);
-    batpos <= ("00" & adout(11 DOWNTO 3)) + adout(11 DOWNTO 4);
+    carpos <= ("00" & adout(11 DOWNTO 3)) + adout(11 DOWNTO 4);
     -- 512 + 256 = 768
     
     display : hexcount
@@ -133,11 +133,11 @@ BEGIN
         pixel_row => S_pixel_row, 
         pixel_col => S_pixel_col, 
         car_x => carpos, 
-        serve => btn0, 
+        start_game => start_game, 
         red => S_red, 
         green => S_green, 
         blue => S_blue,
-        raw_ball_speed => raw_ball_speed,
+        raw_rock_speed => raw_rock_speed,
         score => score
     );
     vga_driver : vga_sync
