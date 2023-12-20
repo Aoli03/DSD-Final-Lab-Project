@@ -60,13 +60,12 @@ ARCHITECTURE Behavioral OF bat_n_ball IS
 
     SIGNAL threads : STD_LOGIC_VECTOR(7 downto 0) := (OTHERS => '0'); -- 8 threads for 8 rocks
     SIGNAL reset_threads : STD_LOGIC := '0'; -- flag that will reset all threads if '1'
-    SIGNAL start_thread :  STD_LOGIC_VECTOR(7 downto 0) := (OTHERS => '0');
+    SIGNAL start_thread :  STD_LOGIC_VECTOR(7 downto 0) := (OTHERS => '0'); -- MUST FLASH THIS FLAG TO START A THREAD
     SIGNAL start_x : STD_LOGIC_VECTOR(9 downto 0);
-    
-    
+    SIGNAL rand_add : STD_LOGIC_VECTOR(12 downto 0) := "0000000000001"; -- random address for rock start position
 BEGIN
     score <= counter(10 downto 3); -- convert the integer to a std logic vector to the displays
-    rock_speed <= raw_rock_speed + conv_std_logic_vector(1,10); -- handles the type conversion
+    rock_speed <= ('0' & raw_rock_speed) + conv_std_logic_vector(1,10); -- add 1 to the speed to make it 1 to 32
     
     rock_x <= rock_x7 & rock_x6 & rock_x5 & rock_x4 & rock_x3 & rock_x2 & rock_x1 & rock_x0;
     rock_y <= rock_y7 & rock_y6 & rock_y5 & rock_y4 & rock_y3 & rock_y2 & rock_y1 & rock_y0;
@@ -74,13 +73,14 @@ BEGIN
     --process to start the game and instantiate values when button is pressed
     gameStart : PROCESS (start_game, v_sync, car_on, rock_on) IS
     BEGIN
-    
+
         IF game_on = '1' THEN
                 counter <= counter + 1;
+        END IF;
                 
-        ELSIF start_game = '1' and game_on = '0' THEN
+        IF start_game = '1' and game_on = '0' THEN
             game_on <= '1';
-            counter <= x"0000"; -- reset the score
+            counter <= (OTHERS => '0'); -- set score to 0
             reset_threads <= '1'; -- flash reset flags
             reset_threads <= '0'; -- unflash the reset flags
         END IF;
@@ -92,6 +92,48 @@ BEGIN
         
     END PROCESS;
     
+    -- Spawn_rocks activates between the falling and rising edge of v_sync, because that is when rand_add changes
+    -- we spawn threads by setting the corresponding start_thread index to '1' then immediately set it back.
+    -- This initializes the rock from the top in rocks.vhd at whatever x-value start_x happened to be at the time 
+    -- and then the rocks.vhd module will set our same threads index to 1, until it is no longer busy.
+    spawn_rocks : PROCESS (rand_add) IS
+    BEGIN
+        IF game_on = '1' THEN
+            -- TUNE THE MOD VALUE TO CHANGE THE SPAWN RATE 
+            -- HIGHER MEANS LESS ROCKS
+            -- LOWER MEANS MORE ROCKS
+           IF (conv_integer(rand_add) mod 10 = 0) THEN
+                -- create a loop to see if a thread is available then spawn in a rock
+                send_to_idle_thread : FOR i IN 0 TO 7 LOOP
+                    IF threads(i) = '0' THEN -- if thread is not busy
+                        start_thread(i) <= '1'; -- start thread
+                        EXIT send_to_idle_thread;
+                    END IF;
+                END LOOP send_to_idle_thread;
+                start_thread <= (OTHERS => '0'); -- reset the start thread flag set
+            END IF;
+        END IF;
+    END PROCESS;
+    
+
+    -- process to set the start x position of the rocks, pseudo random
+    randomizer: PROCESS (v_sync, reset_threads) IS
+        variable tmp : STD_LOGIC := '0';
+        variable overflow_tmp : STD_LOGIC_VECTOR(12 downto 0);
+    BEGIN
+        overflow_tmp := rand_add + start_x;
+        start_x <= overflow_tmp(9 downto 0);
+
+--    IF (reset_threads='1') THEN
+--       -- can't reset to all 0's, as you will enter an invalid state
+--       rand_add <= "0000000000001";
+    IF falling_edge(v_sync) THEN
+       --ELSE Qt <= seed;
+        tmp := rand_add(6) XOR rand_add(4) XOR rand_add(2) XOR rand_add(0);
+        rand_add <= tmp & rand_add(12 downto 1); -- append a random bit and shift it right
+    END IF;
+    END PROCESS;
+
 --    --process to increase the score when experiencing a game pulse
 --    scoreUp : PROCESS (v_sync)IS 
 --    BEGIN
