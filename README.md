@@ -1,4 +1,4 @@
-# DSD-Final-Lab-Project
+# DSD-Final-Lab-Project : Evade
 Group work for Digital System Design, VHDL Projects for Nexys A7-100T FPGAs using Vivado
 
 ## Introduction
