@@ -71,9 +71,7 @@ This formula chooses new positions for each obstacle when they reappear.
 Christopher and Owen did the majority of the programming, Alex's work was on the original GitHub push highlighting ideas for how and where the new functionalities would be implemented and writing ReadMe file for the Repo.
 There were two very different parts of this project's development. Chris originally took a very different direction with the code, creating a thread for each obstacle, and a system that would enable and disable them. 
 
-<p align="center">
- ![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/82727581/a47e740c-26e8-40e4-a395-4138abf51f14)
-</p>
+![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/82727581/b87ef40a-f595-4b39-92bc-95c6338f9afe)
 
 Unfortunately, due to complications with how VHDL handles and announces concurrency issues, we went back to a more simplified approach that ran more closely to the original Lab 6, Pong, code.
 #
