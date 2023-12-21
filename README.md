@@ -2,12 +2,12 @@
 Group work for Digital System Design, VHDL Projects for Nexys A7-100T FPGAs using Vivado
 
 ## Introduction
-Created a game we are calling _**Evade**_, where you play as a 'car' whose horizontal position is controlled by a potentiometer. 
+In _**Evade**_ you play as a 'car' whose horizontal position is controlled by a potentiometer. 
 * **GOAL:** You must avoid obstacles as you accelerate down a road. 
 * **SCORING:** The 7-segment display on the board increments based on the time spent until the player is hit. 
 * **LOSING:** If the car gets hit by an obstacle, then the game will end.
 * **INITIALIZING:** To start/restart the game, press the center button, _BTNC_, on the board.
-** Your score will be renewed and you will start at base speed
+  * Your score will be renewed and you will start at base speed
 
 ## Video of Game
 [![WorkingProject](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fyoutu.be%2FKA-9__TiZo8%3Fsi%3DHlSYueoIqooJYmKL)](https://youtu.be/KA-9__TiZo8?si=HlSYueoIqooJYmKL)
