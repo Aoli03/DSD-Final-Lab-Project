@@ -123,7 +123,9 @@ Unfortunately, due to complications with how VHDL handles and announces concurre
 3 Processes in Bat_n_Ball: 
 - randomizer
 - rockdraw
+  - Every line implementing rocks has 8 variants, 'copy and pasted' with variable name changes.
 - mrock
+  - Every line implementing rocks has 8 variants, 'copy and pasted' with variable name changes.
 
 #
 <p align="center">
