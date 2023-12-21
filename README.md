@@ -50,7 +50,7 @@ When implementing random respawns, we initially had an issue where the obstacles
 To counter this, we used multiplication to add uniqueness to each spawn.
 
 ### Core Changes
-Call a Set of 8 Rocks
+#### Call a Set of 8 Rocks
 - Instantiate 8 Rocks with a uniform size and speed, but independent X and Y-Coordinates
 - Further, we made an STD_LOGIC_VECTOR 'rock_on_screen' which reads '1' on an index if that is on the screen, and '0' if the rock has reached the bottom of the screen
 - 'rock_on' is '1' at an index if the current pixel is looking at that rock, '0' if not
@@ -58,23 +58,23 @@ Call a Set of 8 Rocks
   
 ![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/82727581/9c019665-2c67-4cc6-8fcd-7eea6d16e4be)
 
-Pixel Encoding -- The Multiple Rock Problem
+#### Pixel Encoding -- The Multiple Rock Problem
 - If a pixel is looking at any rock of the many, this becomes the equivalent logic for simple RGB values.
 
 ![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/82727581/c919065e-cc44-489b-8149-53cd352b94d6)
 
-Rock-Car Collisions
+#### Rock-Car Collisions
 - **For each of the 8 rocks, there is almost identical code for the code below**
 - Check for collisions with the car. If the rock is within the car's geometry, then the game turns off.
   
 ![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/82727581/ea86322e-3d7d-492f-a5d0-d5010d016e89)
 
-Rock-Wall Collisions
+#### Rock-Wall Collisions
 - Check for collisions with the bottom wall. If the rock hits the bottom wall, then turn 'rock_on_screen' to '0' for that rock.
   
 ![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/82727581/b5458365-5acf-4a4a-b4ba-a90ac9751970)
 
-Spawning
+#### Spawning
 - If the game is running, and the rock is not on the screen, then spawn it in again at a random start_X.
  - If it's currently on screen, move it down according to the speed.
 - **Each rock has a unique initial spawn delay according to the score, _count_, that needs to be exceeded.**
