@@ -47,7 +47,7 @@ From Lab 6, we also used our score display code with the 7-segment display.
 We also created eight total obstacles instead of just one ball, which run off the original collision detection and framework, and have the modified behaviors. Over time, the obstacles would also begin to travel more quickly, increasing the difficulty over time.
 When implementing random respawns, we initially had an issue where the obstacles would respawn in similar areas and at similar intervals. 
 To counter this, Owen used prime number multiplication to add uniqueness to each spawn.
-
+### Core Architecture Changes
 ![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/82727581/9c019665-2c67-4cc6-8fcd-7eea6d16e4be)
 
 ![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/82727581/b5c868c8-3daa-4212-8f7c-448fa1581e75)
@@ -72,7 +72,7 @@ Christopher and Owen did the majority of the programming, Alex's work was on the
 There were two very different parts of this project's development. Chris originally took a very different direction with the code, creating a thread for each obstacle, and a system that would enable and disable them. 
 
 <p align="center">
-  <img src="Thread_Version.jpg" alt="Thread_version">
+ ![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/82727581/a47e740c-26e8-40e4-a395-4138abf51f14)
 </p>
 
 Unfortunately, due to complications with how VHDL handles and announces concurrency issues, we went back to a more simplified approach that ran more closely to the original Lab 6, Pong, code.
