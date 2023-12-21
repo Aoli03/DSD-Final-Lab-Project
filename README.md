@@ -9,16 +9,7 @@ Attachments needed: Potentiometer
 ![potentiometer](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/98103091/bd074cfc-af65-4608-83c1-67b9f7131356)
 ![adc](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/98103091/afd477de-8d1b-43ec-8c98-96ecb9016d4c)
 ### (video of code and game working)
-<p align="center">
-  <a href="https://youtu.be/KA-9__TiZo8?si=tS1_NFEJWww7RmaJ">
-    <img src="https://img.youtube.com/vi/KA-9__TiZo8/0.jpg" alt="Video" width="640" height="360">
-  </a>
-</p>
-
-<!-- Add the following markdown to enable video playback -->
-<p align="center">
-  <b>Click to watch the video:</b> <a href="https://youtu.be/KA-9__TiZo8?si=tS1_NFEJWww7RmaJ">https://youtu.be/KA-9__TiZo8</a>
-</p>
+[![WorkingProject](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fyoutu.be%2FKA-9__TiZo8%3Fsi%3DHlSYueoIqooJYmKL)](https://youtu.be/KA-9__TiZo8?si=HlSYueoIqooJYmKL)
 
 ## How to run
 1. Create six new source files of file type VHDL called clk_wiz_0, clk_wiz_0_clk_wiz, vga_sync, bat_n_ball, adc_if, and pong
