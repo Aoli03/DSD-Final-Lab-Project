@@ -24,12 +24,12 @@ In _**Evade**_ you play as a 'car' whose horizontal position is controlled by a 
 ![adc](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/98103091/afd477de-8d1b-43ec-8c98-96ecb9016d4c)
 
 ## How to Run
-1. Create six new source files of file type VHDL called clk_wiz_0, clk_wiz_0_clk_wiz, vga_sync, bat_n_ball, adc_if, and pong
-* Create a new constraint file of file type XDC called pong
+1. Create six new source files of file type VHDL called clk_wiz_0, clk_wiz_0_clk_wiz, vga_sync, bat_n_ball, adc_if, counter, hexcalc, leddec, and pong
+* Create a new constraint file of file type XDC called Evade
 * Choose Nexys A7-100T board for the project
 * Click 'Finish'
-* Click design sources and copy the VHDL code from clk_wiz_0, clk_wiz_0_clk_wiz, vga_sync.vhd, bat_n_ball.vhd, adc_if.vhd, pong.vhd
-* Click constraints and copy the code from pong.xdc
+* Click design sources and copy the VHDL code from clk_wiz_0, clk_wiz_0_clk_wiz, vga_sync, bat_n_ball, adc_if, counter, hexcalc, leddec, and pong
+* Click constraints and copy the code from Evade.xdc
 
 2. Run synthesis
 3. Run implementation and open the implemented design
@@ -70,7 +70,7 @@ To counter this, we used multiplication to add uniqueness to each spawn.
 ![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/82727581/c919065e-cc44-489b-8149-53cd352b94d6)
 
 #### Rock-Car Collisions
-- **For each of the 8 rocks, there is almost identical code for the code below**
+##### **For each of the 8 rocks, there is almost identical code for the code below**
 - Check for collisions with the car. If the rock is within the car's geometry, then the game turns off.
   
 ![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/82727581/ea86322e-3d7d-492f-a5d0-d5010d016e89)
