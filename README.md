@@ -2,12 +2,17 @@
 Group work for Digital System Design, VHDL Projects for Nexys A7-100T FPGAs using Vivado
 
 ## Introduction
-This project creates a game in which a car object, whose horizontal position is controlled by a potentiometer, must avoid obstacles as it speeds down a road. The 7-segment display on the board increments based on the time spent until the player is hit. If the car gets hit by an obstacle, then the game will end. To restart the game, press the center button on the board.
+We created a game we are calling _**Evade**_, where you play as a 'car' whose horizontal position is controlled by a potentiometer. 
+* **GOAL:** You must avoid obstacles as you accelerate speeds down a road. 
+* **SCORING:** The 7-segment display on the board increments based on the time spent until the player is hit. 
+* **LOSING:** If the car gets hit by an obstacle, then the game will end.
+* **INITIALIZING:** To start/restart the game, press the center button, _BTNC_, on the board.
+** Your score will be renewed and you will start at base speed
+
 Attachments needed: 
-* 5k&Omega; Potentiometer and a 
-* 12-bit [analog-to-digital converter](https://en.wikipedia.org/wiki/Analog-to-digital_converter) (ADC) called [Pmod AD1](https://store.digilentinc.com/pmod-ad1-two-12-bit-a-d-inputs/) connected to the top pins of the Pmod port JA (See Section 10 of the [Reference Manual](https://reference.digilentinc.com/_media/reference/programmable-logic/nexys-a7/nexys-a7_rm.pdf))
-* Reforged the FPGA code developed in Lab 6 (PONG) to build a new game called **_Evade_** game 
-* 
+* 5 k&Omega; Potentiometer
+* 12-bit [analog-to-digital converter](https://en.wikipedia.org/wiki/Analog-to-digital_converter) (ADC) called [Pmod AD1](https://store.digilentinc.com/pmod-ad1-two-12-bit-a-d-inputs/)
+** Connected to the top pins of the Pmod port JA (See Section 10 of the [Reference Manual](https://reference.digilentinc.com/_media/reference/programmable-logic/nexys-a7/nexys-a7_rm.pdf))
 ![ad1](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/98103091/ed545e78-0733-40e7-aa92-60703d478cdd)
 ![knob](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/98103091/550d01d7-49ca-421a-8eb5-8dc8e1025038)
 ![potentiometer](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/98103091/bd074cfc-af65-4608-83c1-67b9f7131356)
