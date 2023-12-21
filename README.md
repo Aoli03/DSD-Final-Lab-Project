@@ -58,11 +58,10 @@ To counter this, Owen used prime number multiplication to add uniqueness to each
 
 - If a pixel is looking at any rock of the many, this becomes the equivalent logic for simple RGB values.
 
-![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/82727581/b5c868c8-3daa-4212-8f7c-448fa1581e75)
-
-
 ![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/82727581/c919065e-cc44-489b-8149-53cd352b94d6)
 
+- AHHHHHHHH
+  
 ![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/82727581/ea86322e-3d7d-492f-a5d0-d5010d016e89)
 
 ![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/82727581/b5458365-5acf-4a4a-b4ba-a90ac9751970)
