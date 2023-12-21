@@ -15,6 +15,11 @@ Attachments needed: Potentiometer
   </a>
 </p>
 
+<!-- Add the following markdown to enable video playback -->
+<p align="center">
+  <b>Click to watch the video:</b> <a href="https://youtu.be/KA-9__TiZo8?si=tS1_NFEJWww7RmaJ">https://youtu.be/KA-9__TiZo8</a>
+</p>
+
 ## How to run
 1. Create six new source files of file type VHDL called clk_wiz_0, clk_wiz_0_clk_wiz, vga_sync, bat_n_ball, adc_if, and pong
 - Create a new constraint file of file type XDC called pong
