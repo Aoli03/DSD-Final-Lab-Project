@@ -47,15 +47,20 @@ From Lab 6, we also used our score display code with the 7-segment display.
 We also created eight total obstacles instead of just one ball, which run off the original collision detection and framework, and have the modified behaviors. Over time, the obstacles would also begin to travel more quickly, increasing the difficulty over time.
 When implementing random respawns, we initially had an issue where the obstacles would respawn in similar areas and at similar intervals. 
 To counter this, Owen used prime number multiplication to add uniqueness to each spawn.
+
 ![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/82727581/9c019665-2c67-4cc6-8fcd-7eea6d16e4be)
+
 ![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/82727581/b5c868c8-3daa-4212-8f7c-448fa1581e75)
+
 ![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/82727581/c919065e-cc44-489b-8149-53cd352b94d6)
+
 ![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/82727581/ea86322e-3d7d-492f-a5d0-d5010d016e89)
+
 ![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/82727581/b5458365-5acf-4a4a-b4ba-a90ac9751970)
+
 ![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/82727581/2096bc8c-c21b-48f8-9f88-63375488e316)
+
 ![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/82727581/eef0ffc2-7cd1-439c-b064-1963e433dee0)
-
-
 
 In order to continuously generate obstacles, we used a formula involving multiple factors, including score, the current position of the car and the obstacle, a prime number identifier, and a mod division:
 ![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/98103091/6a174626-a31d-4507-95e5-4e58a3f4c471)
