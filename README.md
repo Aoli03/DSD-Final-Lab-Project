@@ -2,7 +2,7 @@
 Group work for Digital System Design, VHDL Projects for Nexys A7-100T FPGAs using Vivado
 
 ## Introduction
-We created a game we are calling _**Evade**_, where you play as a 'car' whose horizontal position is controlled by a potentiometer. 
+Created a game we are calling _**Evade**_, where you play as a 'car' whose horizontal position is controlled by a potentiometer. 
 * **GOAL:** You must avoid obstacles as you accelerate down a road. 
 * **SCORING:** The 7-segment display on the board increments based on the time spent until the player is hit. 
 * **LOSING:** If the car gets hit by an obstacle, then the game will end.
@@ -23,11 +23,12 @@ We created a game we are calling _**Evade**_, where you play as a 'car' whose ho
 
 ## How to run
 1. Create six new source files of file type VHDL called clk_wiz_0, clk_wiz_0_clk_wiz, vga_sync, bat_n_ball, adc_if, and pong
-- Create a new constraint file of file type XDC called pong
-- Choose Nexys A7-100T board for the project
-- Click 'Finish'
-- Click design sources and copy the VHDL code from clk_wiz_0, clk_wiz_0_clk_wiz, vga_sync.vhd, bat_n_ball.vhd, adc_if.vhd, pong.vhd
-- Click constraints and copy the code from pong.xdc
+* Create a new constraint file of file type XDC called pong
+* Choose Nexys A7-100T board for the project
+* Click 'Finish'
+* Click design sources and copy the VHDL code from clk_wiz_0, clk_wiz_0_clk_wiz, vga_sync.vhd, bat_n_ball.vhd, adc_if.vhd, pong.vhd
+* Click constraints and copy the code from pong.xdc
+
 2. Run synthesis
 3. Run implementation and open the implemented design
 4. Generate bitstream, open hardware manager, and program device
