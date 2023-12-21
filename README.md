@@ -83,6 +83,7 @@ To counter this, we used multiplication to add uniqueness to each spawn.
   - The '*2' term isn't uniform, every rock has a unique multiplicative term to maintain randomness between rocks.
     
 ![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/82727581/2096bc8c-c21b-48f8-9f88-63375488e316)
+
 This formula chooses new positions for each obstacle when they reappear.
 
 - Check to see if the corresponding rock is on screen by calculating if the pixel is in its geometry.
