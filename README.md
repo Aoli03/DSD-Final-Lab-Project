@@ -1,3 +1,7 @@
+<p align="center">
+  ![image](Game_Running.gif)
+</p>
+
 # DSD-Final-Lab-Project : Evade
 Group work for Digital System Design, VHDL Projects for Nexys A7-100T FPGAs using Vivado
 
@@ -70,9 +74,6 @@ This formula chooses new positions for each obstacle when they reappear.
 ## Process Summary
 Christopher and Owen did the majority of the programming, Alex's work was on the original GitHub push highlighting ideas for how and where the new functionalities would be implemented and writing ReadMe file for the Repo.
 There were two very different parts of this project's development. Chris originally took a very different direction with the code, creating a thread for each obstacle, and a system that would enable and disable them. 
-
-![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/82727581/b87ef40a-f595-4b39-92bc-95c6338f9afe)
-
 Unfortunately, due to complications with how VHDL handles and announces concurrency issues, we went back to a more simplified approach that ran more closely to the original Lab 6, Pong, code.
 #
 <p align="center">
