@@ -4,8 +4,8 @@ Group work for Digital System Design, VHDL Projects for Nexys A7-100T FPGAs usin
 ## Introduction
 This project creates a game in which a car object, whose horizontal position is controlled by a potentiometer, must avoid obstacles as it speeds down a road. The 7-segment display on the board increments based on the time spent until the player is hit. If the car gets hit by an obstacle, then the game will end. To restart the game, press the center button on the board.
 Attachments needed: 
-*5k&Omega; Potentiometer and a 
-*12-bit [analog-to-digital converter](https://en.wikipedia.org/wiki/Analog-to-digital_converter) (ADC) called [Pmod AD1](https://store.digilentinc.com/pmod-ad1-two-12-bit-a-d-inputs/) connected to the top pins of the Pmod port JA (See Section 10 of the [Reference Manual](https://reference.digilentinc.com/_media/reference/programmable-logic/nexys-a7/nexys-a7_rm.pdf))
+* 5k&Omega; Potentiometer and a 
+* 12-bit [analog-to-digital converter](https://en.wikipedia.org/wiki/Analog-to-digital_converter) (ADC) called [Pmod AD1](https://store.digilentinc.com/pmod-ad1-two-12-bit-a-d-inputs/) connected to the top pins of the Pmod port JA (See Section 10 of the [Reference Manual](https://reference.digilentinc.com/_media/reference/programmable-logic/nexys-a7/nexys-a7_rm.pdf))
 * Reforged the FPGA code developed in Lab 6 (PONG) to build a new game called **_Evade_** game 
 * 
 ![ad1](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/98103091/ed545e78-0733-40e7-aa92-60703d478cdd)
