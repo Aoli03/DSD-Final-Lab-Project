@@ -12,7 +12,6 @@ Attachments needed: Potentiometer
 
 
 ## How to run
-### (update this step with our new file names)
 1. Create six new source files of file type VHDL called clk_wiz_0, clk_wiz_0_clk_wiz, vga_sync, bat_n_ball, adc_if, and pong
 - Create a new constraint file of file type XDC called pong
 - Choose Nexys A7-100T board for the project
@@ -34,11 +33,14 @@ We built upon the code provided, and the portions we created, for Lab 6, the Pon
 
 From Lab 6, we also used our score display code with the 7-segment display.
 We also created eight total obstacles instead of just one ball, which run off the original collision detection and framework, and have the modified behaviors. Over time, the obstacles would also begin to travel more quickly, increasing the difficulty over time.
-In order to continuously generate obstacles, we used a forumla involving multiple factors, including score, current position of the car and the obstacle, and a mod division:
-((score + 1) * (NOT(position) XOR bat_x)) mod 800
-This formula would choose new positions for each obstacle when they reappear.
+
+In order to continuously generate obstacles, we used a forumla involving multiple factors, including score, current position of the car and the obstacle, a prime number identifier, and a mod division:
+![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/98103091/6a174626-a31d-4507-95e5-4e58a3f4c471)
+This formula chooses new positions for each obstacle when they reappear.
 
 
 ## Process Summary
 The majority of programming was done by Christopher and Owen, and Alex's original github push included the ideas for how and where the new functionalities would be implemented, and writing the Github readme file reprot.
 There were two very different parts of this project's development. Chris originally took a very different direction with the code, creating a thread for each obstacle, and a system that would enable and disable them. Unfortunately, due to unfindable issues, we went back to a more simplified approach that ran more closely to the original Lab 6 code.
+
+When implementing the random respawns, we initially had an issue where the obstacles would respawn in similar areas, on similar intervals. To counter this, Owen used the prime number multiplication in order to add uniqueness to each spawn.
