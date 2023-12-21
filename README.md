@@ -94,7 +94,8 @@ This formula chooses new positions for each obstacle when they reappear.
 We had to get creative to generate pseudo-random numbers as a lot of resources online mention that package-based RNG systems don't synthesize well.
 We found quite even spawn distributions when we XOR'd the current pixel row, pixel column, current bat position, and current score together for every falling edge of the clock cycle.
 Falling Edges were used to change this number so that other modules could use it on the Rising Edge.
-Something of Note: **changes in the output between any two frames are likely to be similar so we added a unique multiple to each random position when each rock wanted to respawn.**
+
+**Something of Note:** _**changes in the output between any two frames are likely to be similar so we added a unique multiple to each random position when each rock wanted to respawn.**_
 ![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/82727581/f52a5b77-695d-4b96-b7e2-58a604f8d095)
 
 ## Process Summary
