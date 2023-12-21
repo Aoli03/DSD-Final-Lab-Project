@@ -122,6 +122,8 @@ Unfortunately, due to complications with how VHDL handles and announces concurre
 #### Successful Case
 3 Processes in Bat_n_Ball: 
 - randomizer
+  - Obtaining a visually uniform spawn distribution was challenging
+  - The game is always different because it incorporates the car's position in the function
 - rockdraw
   - Every line implementing rocks has 8 variants, 'copy and pasted' with variable name changes.
 - mrock
