@@ -27,8 +27,10 @@ Push BTNC to start the bouncing ball and use the bat to keep the ball in play
 We built upon the code provided, and the portions we created, for Lab 6, the Pong game. Some major functionalities were swapped:
 - When an object hits the car, instead of incrementing the score counter, it will end the game
 - When an object reaches the bottom of the screen, instead of ending the game, it will increment the score counter
+
 From Lab 6, we also used our score display code with the 7-segment display.
 We also created eight total obstacles instead of just one ball, which run off the original collision detection and framework, and have the modified behaviors.
+
 In order to continuously generate obstacles, whenever one reaches the bottom of the screen, random number generation was used to change:
 - How long it would take to reappear
 - The horizontal position it would respawn at
