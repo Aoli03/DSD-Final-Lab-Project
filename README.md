@@ -1,9 +1,6 @@
-<p align="center">
-  ![image](Game_Running.gif)
-</p>
-
 # DSD-Final-Lab-Project : Evade
 Group work for Digital System Design, VHDL Projects for Nexys A7-100T FPGAs using Vivado
+![image](Game_Running.gif)
 
 ## Introduction
 In _**Evade**_ you play as a 'car' whose horizontal position is controlled by a potentiometer. 
@@ -51,10 +48,17 @@ From Lab 6, we also used our score display code with the 7-segment display.
 We also created eight total obstacles instead of just one ball, which run off the original collision detection and framework, and have the modified behaviors. Over time, the obstacles would also begin to travel more quickly, increasing the difficulty over time.
 When implementing random respawns, we initially had an issue where the obstacles would respawn in similar areas and at similar intervals. 
 To counter this, Owen used prime number multiplication to add uniqueness to each spawn.
-### Core Architecture Changes
+### Core Changes
+- Instantiate 8 Rocks with a uniform size and speed, but independent X and Y-Coordinates
+- Further, we made a _single_ STD_LOGIC_VECTOR 'rock_on_screen' which reads '1' on an index if that is on the screen, and '0' if the rock has reached the bottom of the screen
+- When respawning the rocks, we use start_x as a pseudo-random value
+  
 ![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/82727581/9c019665-2c67-4cc6-8fcd-7eea6d16e4be)
 
+- If a pixel is looking at any rock of the many, this becomes the equivalent logic for simple RGB values.
+
 ![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/82727581/b5c868c8-3daa-4212-8f7c-448fa1581e75)
+
 
 ![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/82727581/c919065e-cc44-489b-8149-53cd352b94d6)
 
