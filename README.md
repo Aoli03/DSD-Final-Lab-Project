@@ -33,11 +33,12 @@ We built upon the code provided, and the portions we created, for Lab 6, the Pon
 - When an object reaches the bottom of the screen, instead of ending the game, it will respawn in a new location
 
 From Lab 6, we also used our score display code with the 7-segment display.
-We also created eight total obstacles instead of just one ball, which run off the original collision detection and framework, and have the modified behaviors.![ad1]
-
-In order to continuously generate obstacles, whenever one reaches the bottom of the screen, random number generation was used to change the horizontal position it would respawn at. The random position was determined by a randomly generated number, modded by 800 in order to produce a position within the horizontal bounds of the screen.
+We also created eight total obstacles instead of just one ball, which run off the original collision detection and framework, and have the modified behaviors. Over time, the obstacles would also begin to travel more quickly, increasing the difficulty over time.
+In order to continuously generate obstacles, we used a forumla involving multiple factors, including score, current position of the car and the obstacle, and a mod division:
+((score + 1) * (NOT(position) XOR bat_x)) mod 800
+This formula would choose new positions for each obstacle when they reappear.
 
 
 ## Process Summary
 The majority of programming was done by Christopher and Owen, and Alex's original github push included the ideas for how and where the new functionalities would be implemented, and writing the Github readme file reprot.
-There were two very different parts of this project's development. Chris originally took a very different direction with the code, creating a thread for each obstacle, and a system that would enable and disable them. Unfortunately, due to unfindable issues, we went back to a more simplified approach that ran more closely to the original Lab 6 code. 
+There were two very different parts of this project's development. Chris originally took a very different direction with the code, creating a thread for each obstacle, and a system that would enable and disable them. Unfortunately, due to unfindable issues, we went back to a more simplified approach that ran more closely to the original Lab 6 code.
