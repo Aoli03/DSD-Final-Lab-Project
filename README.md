@@ -55,3 +55,5 @@ Christopher and Owen did the majority of the programming, Alex's work was on the
 There were two very different parts of this project's development. Chris originally took a very different direction with the code, creating a thread for each obstacle, and a system that would enable and disable them. Unfortunately, due to complications with how VHDL handles and announces concurrency issues, we went back to a more simplified approach that ran more closely to the original Lab 6, Pong, code.
 
 When implementing the random respawns, we initially had an issue where the obstacles would respawn in similar areas and at similar intervals. To counter this, Owen used prime number multiplication to add uniqueness to each spawn.
+
+<iframe src="https://giphy.com/embed/VekcnHOwOI5So" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/digital-VekcnHOwOI5So">via GIPHY</a></p>
