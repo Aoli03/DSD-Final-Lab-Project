@@ -8,7 +8,7 @@ Attachments needed: Potentiometer
 ![knob](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/98103091/550d01d7-49ca-421a-8eb5-8dc8e1025038)
 ![potentiometer](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/98103091/bd074cfc-af65-4608-83c1-67b9f7131356)
 ![adc](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/98103091/afd477de-8d1b-43ec-8c98-96ecb9016d4c)
-### (video of code and game working)
+## (Video of Game Working)
 [![WorkingProject](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fyoutu.be%2FKA-9__TiZo8%3Fsi%3DHlSYueoIqooJYmKL)](https://youtu.be/KA-9__TiZo8?si=HlSYueoIqooJYmKL)
 
 ## How to run
