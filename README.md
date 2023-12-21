@@ -110,13 +110,21 @@ Falling Edges were used to change this number so that other modules could use it
 ![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/82727581/f52a5b77-695d-4b96-b7e2-58a604f8d095)
 
 ## Process Summary
-Christopher and Owen did the majority of the programming, Alex's work was on the original GitHub push highlighting ideas for how and where the new functionalities would be implemented and writing ReadMe file for the Repo.
-There were two very different parts of this project's development. Chris originally took a very different direction with the code, creating a thread for each obstacle, and a system that would enable and disable them. 
+
+There were two very different parts of this project's development. 
+Chris originally took a very different direction with the code, creating a thread for each obstacle, and a system that would enable and disable them. 
 
 Below is the diagram representing this hypothetical system.
 ![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/82727581/087b074c-05ce-4953-92c9-d6dcc68af912)
 
 Unfortunately, due to complications with how VHDL handles and announces concurrency issues, we went back to a more simplified approach that ran more closely to the original Lab 6, Pong, code.
+
+#### Successful Case
+3 Processes in Bat_n_Ball: 
+- randomizer
+- rockdraw
+- mrock
+
 #
 <p align="center">
   <img src="https://media.giphy.com/media/VekcnHOwOI5So/giphy.gif" alt="Cat Coding">
