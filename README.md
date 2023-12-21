@@ -36,7 +36,7 @@ In _**Evade**_ you play as a 'car' whose horizontal position is controlled by a 
 Click 'Generate Bitstream'
 Click 'Open Hardware Manager' and click 'Open Target' then 'Auto Connect'
 Click 'Program Device' then xc7a100t_0 to download pong.bit to the Nexys A7-100T board
-Push BTNC to start the bouncing ball and use the bat to keep the ball in play
+Push BTNC to start the game
 
 ## Modifications
 We built upon the code provided, and the portions we created, for Lab 6, the Pong game. Some major functionalities were swapped:
