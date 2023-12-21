@@ -45,8 +45,11 @@ We built upon the code provided, and the portions we created, for Lab 6, the Pon
 - When an object reaches the bottom of the screen, instead of ending the game, it will respawn in a new location
 
 From Lab 6, we also used our score display code with the 7-segment display **in Hexadecimal**. _Every frame, your score will increase by 1 but is displayed as a 'count' integer divided by 8 to keep numbers small._
+
 We also created eight total obstacles instead of just one ball which run off the original collision detection and framework with the modified behaviors. Over time, the obstacles would also begin to travel more quickly, increasing the difficulty.
+
 When implementing random respawns, we initially had an issue where the obstacles would respawn in similar areas and at similar intervals. 
+
 To counter this, we used multiplication to add uniqueness to each spawn.
 
 ### Core Changes
