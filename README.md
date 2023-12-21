@@ -25,11 +25,11 @@ In _**Evade**_ you play as a 'car' whose horizontal position is controlled by a 
 
 ## How to Run
 1. Create six new source files of file type VHDL called clk_wiz_0, clk_wiz_0_clk_wiz, vga_sync, bat_n_ball, adc_if, and pong
- 1.1. Create a new constraint file of file type XDC called pong
- 1.2. Choose Nexys A7-100T board for the project
- 1.3. Click 'Finish'
- 1.4. Click design sources and copy the VHDL code from clk_wiz_0, clk_wiz_0_clk_wiz, vga_sync.vhd, bat_n_ball.vhd, adc_if.vhd, pong.vhd
- 1.5. Click constraints and copy the code from pong.xdc
+* Create a new constraint file of file type XDC called pong
+* Choose Nexys A7-100T board for the project
+* Click 'Finish'
+* Click design sources and copy the VHDL code from clk_wiz_0, clk_wiz_0_clk_wiz, vga_sync.vhd, bat_n_ball.vhd, adc_if.vhd, pong.vhd
+* Click constraints and copy the code from pong.xdc
 
 2. Run synthesis
 3. Run implementation and open the implemented design
