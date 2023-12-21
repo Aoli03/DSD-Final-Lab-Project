@@ -15,15 +15,7 @@ ENTITY pong IS
         ADC_SCLK : OUT STD_LOGIC;
         ADC_SDATA1 : IN STD_LOGIC;
         ADC_SDATA2 : IN STD_LOGIC;
-        btn0 : IN STD_LOGIC; -- button to initiate serve
-        
-        --MUST BE 4 Downto 0
-        raw_ball_speed : IN STD_LOGIC_VECTOR (4 downto 0); -- made as 10 downto 0 to avoid type error in bat_n_ball
-        
-        --DISPLAY
-		anode : OUT STD_LOGIC_VECTOR (7 DOWNTO 0); -- Display ID
-		seg : OUT STD_LOGIC_VECTOR (6 DOWNTO 0) -- seven segments
-        );
+        btn0 : IN STD_LOGIC); -- button to initiate serve
 END pong;
 
 ARCHITECTURE Behavioral OF pong IS
@@ -36,18 +28,6 @@ ARCHITECTURE Behavioral OF pong IS
     SIGNAL serial_clk, sample_clk : STD_LOGIC;
     SIGNAL adout : STD_LOGIC_VECTOR (11 DOWNTO 0);
     SIGNAL count : STD_LOGIC_VECTOR (9 DOWNTO 0); -- counter to generate ADC clocks
-    
-    SIGNAL score : STD_LOGIC_VECTOR (7 DOWNTO 0); -- ADDED score of game
-    -- ADD HEXCOUNT FOR DISPLAY
-    COMPONENT hexcount IS
-    	PORT (
-		clk_100MHz : IN STD_LOGIC;
-		anode : OUT STD_LOGIC_VECTOR (7 DOWNTO 0);
-		seg : OUT STD_LOGIC_VECTOR (6 DOWNTO 0);
-		score : IN STD_LOGIC_VECTOR(7 downto 0) -- score
-	);
-	END COMPONENT;
-	
     COMPONENT adc_if IS
         PORT (
             SCK : IN STD_LOGIC;
@@ -58,7 +38,6 @@ ARCHITECTURE Behavioral OF pong IS
             data_2 : OUT STD_LOGIC_VECTOR(11 DOWNTO 0)
         );
     END COMPONENT;
-    --MODIFIED
     COMPONENT bat_n_ball IS
         PORT (
             v_sync : IN STD_LOGIC;
@@ -68,10 +47,7 @@ ARCHITECTURE Behavioral OF pong IS
             serve : IN STD_LOGIC;
             red : OUT STD_LOGIC;
             green : OUT STD_LOGIC;
-            blue : OUT STD_LOGIC;
-            
-            raw_ball_speed : IN STD_LOGIC_VECTOR(4 downto 0); -- added
-            score : OUT STD_LOGIC_VECTOR(7 downto 0) -- added
+            blue : OUT STD_LOGIC
         );
     END COMPONENT;
     COMPONENT vga_sync IS
@@ -110,14 +86,6 @@ BEGIN
     --batpos <= ('0' & adout(11 DOWNTO 3)) + adout(11 DOWNTO 5);
     batpos <= ("00" & adout(11 DOWNTO 3)) + adout(11 DOWNTO 4);
     -- 512 + 256 = 768
-    
-    display : hexcount
-    PORT MAP(--instantiate the Display
-        clk_100MHz => clk_in,
-		anode => anode,
-		seg => seg,
-		score => score
-    );
     adc : adc_if
     PORT MAP(-- instantiate ADC serial to parallel interface
         SCK => serial_clk, 
@@ -136,9 +104,7 @@ BEGIN
         serve => btn0, 
         red => S_red, 
         green => S_green, 
-        blue => S_blue,
-        raw_ball_speed => raw_ball_speed,
-        score => score
+        blue => S_blue
     );
     vga_driver : vga_sync
     PORT MAP(--instantiate vga_sync component
