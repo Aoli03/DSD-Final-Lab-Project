@@ -56,4 +56,6 @@ There were two very different parts of this project's development. Chris origina
 
 When implementing the random respawns, we initially had an issue where the obstacles would respawn in similar areas and at similar intervals. To counter this, Owen used prime number multiplication to add uniqueness to each spawn.
 
-<iframe src="https://giphy.com/embed/VekcnHOwOI5So" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/digital-VekcnHOwOI5So">via GIPHY</a></p>
+<p align="center">
+  <img src="[https://example.com/your-gif-file.gif](https://media.giphy.com/media/VekcnHOwOI5So/giphy.gif)https://media.giphy.com/media/VekcnHOwOI5So/giphy.gif" alt="Cat Coding">
+</p>
