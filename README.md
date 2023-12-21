@@ -10,7 +10,7 @@ We created a game we are calling _**Evade**_, where you play as a 'car' whose ho
 ** Your score will be renewed and you will start at base speed
 
 Attachments needed: 
-* NI Digilent Nexys A7-100T FPGA Trainer Board [Nexys A7](https://store.digilentinc.com/nexys-a7-fpga-trainer-board-recommended-for-ece-curriculum/) 
+* [NI Digilent Nexys A7-100T FPGA Trainer Board](https://store.digilentinc.com/nexys-a7-fpga-trainer-board-recommended-for-ece-curriculum/) 
 * 5 k&Omega; Potentiometer
 * 12-bit [analog-to-digital converter](https://en.wikipedia.org/wiki/Analog-to-digital_converter) (ADC) called [Pmod AD1](https://store.digilentinc.com/pmod-ad1-two-12-bit-a-d-inputs/)
 ** Connected to the top pins of the Pmod port JA (See Section 10 of the [Reference Manual](https://reference.digilentinc.com/_media/reference/programmable-logic/nexys-a7/nexys-a7_rm.pdf))
