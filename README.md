@@ -55,7 +55,7 @@ When implementing random respawns, we initially had an issue where the obstacles
 
 To counter this, we used multiplication to add uniqueness to each spawn.
 
-Here is our VHDL object entity tree:
+**Here is our VHDL object entity tree:**
 
 ![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/82727581/779deea3-a5a6-4c68-9a5f-ecb9fc0fb7c9)
 
