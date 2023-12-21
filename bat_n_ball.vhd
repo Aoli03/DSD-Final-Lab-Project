@@ -12,38 +12,46 @@ ENTITY bat_n_ball IS
         serve : IN STD_LOGIC; -- initiates serve
         red : OUT STD_LOGIC;
         green : OUT STD_LOGIC;
-        blue : OUT STD_LOGIC
+        blue : OUT STD_LOGIC;
+        
+        raw_ball_speed : IN STD_LOGIC_VECTOR(4 downto 0); -- NEW Input contains unmodified speed on range of 0 to 31
+        score : OUT STD_LOGIC_VECTOR(7 downto 0) -- NEW Score for game needs to go to hexcount
     );
 END bat_n_ball;
 
 ARCHITECTURE Behavioral OF bat_n_ball IS
+    -- Bat information
     CONSTANT bsize : INTEGER := 8; -- ball size in pixels
-    CONSTANT bat_w : INTEGER := 20; -- bat width in pixels
+    CONSTANT bat_w_init : INTEGER := 40; -- NEW
+    SIGNAL bat_w : INTEGER := bat_w_init; -- MODIFIED bat width in pixels, Started at 20, doubled into 40, removed constant status
     CONSTANT bat_h : INTEGER := 3; -- bat height in pixels
-    constant r_size : integer := 8;
+    
+    -- NEW SCORE INFOMATION
+    SIGNAL has_scored : STD_LOGIC := '0'; -- Flag that makes score only able to happen once per bounce, as it used to proc 2-3 times on bounce
+    SIGNAL counter : STD_LOGIC_VECTOR(7 downto 0); -- Score, or the number of times the ball has come in contact with the bat 
+    
     -- distance ball moves each frame
-    CONSTANT ball_speed : STD_LOGIC_VECTOR (10 DOWNTO 0) := CONV_STD_LOGIC_VECTOR (6, 11);
+    -- CONSTANT ball_speed : STD_LOGIC_VECTOR (10 DOWNTO 0) := CONV_STD_LOGIC_VECTOR (6, 11);
+    SIGNAL ball_speed : STD_LOGIC_VECTOR (10 DOWNTO 0); -- removed constant status because it was to be modified by switches
     SIGNAL ball_on : STD_LOGIC; -- indicates whether ball is at current pixel position
     SIGNAL bat_on : STD_LOGIC; -- indicates whether bat at over current pixel position
     SIGNAL game_on : STD_LOGIC := '0'; -- indicates whether ball is in play
-    signal rock1_on : std_logic;
     -- current ball position - intitialized to center of screen
     SIGNAL ball_x : STD_LOGIC_VECTOR(10 DOWNTO 0) := CONV_STD_LOGIC_VECTOR(400, 11);
     SIGNAL ball_y : STD_LOGIC_VECTOR(10 DOWNTO 0) := CONV_STD_LOGIC_VECTOR(300, 11);
     -- bat vertical position
     CONSTANT bat_y : STD_LOGIC_VECTOR(10 DOWNTO 0) := CONV_STD_LOGIC_VECTOR(500, 11);
-    -- rock position
-    constant rock1_x : STD_LOGIC_VECTOR(10 DOWNTO 0) := CONV_STD_LOGIC_VECTOR(200, 11);
-    signal rock1_y : STD_LOGIC_VECTOR(10 DOWNTO 0) := CONV_STD_LOGIC_VECTOR(0, 11);
-    constant rock_speed: STD_LOGIC_VECTOR (10 DOWNTO 0) := CONV_STD_LOGIC_VECTOR (6, 11);
-    signal rock1_on_screen: std_logic;
     -- current ball motion - initialized to (+ ball_speed) pixels/frame in both X and Y directions
-    SIGNAL ball_x_motion, ball_y_motion : STD_LOGIC_VECTOR(10 DOWNTO 0) := ball_speed;
+    SIGNAL ball_x_motion, ball_y_motion : STD_LOGIC_VECTOR(10 DOWNTO 0):= CONV_STD_LOGIC_VECTOR(1, 11); -- MODIFIED Instantitate both velocities to 1 so they don't start at 0
+    
+    
 BEGIN
+    score <= counter; -- convert the integer to a std logic vector to the displays
+    ball_speed <= raw_ball_speed + conv_std_logic_vector(1,11); -- handles the type conversion
+    
     red <= NOT bat_on; -- color setup for red ball and cyan bat on white background
-    green <= NOT (rock1_on or ball_on);
-    blue <= NOT (ball_on or rock1_on);
-   
+    green <= NOT ball_on;
+    blue <= NOT ball_on;
     -- process to draw round ball
     -- set ball_on if current pixel address is covered by ball position
     balldraw : PROCESS (ball_x, ball_y, pixel_row, pixel_col) IS
@@ -65,25 +73,10 @@ BEGIN
             ball_on <= '0';
         END IF;
     END PROCESS;
-    -- process to draw rock
-    rockdraw: PROCESS (rock1_y, pixel_row, pixel_col) IS
-    BEGIN
-        IF rock1_on_screen = '1' THEN 
-            IF pixel_col >= rock1_x - r_size AND
-            pixel_col <= rock1_x + r_size AND
-                pixel_row >= rock1_y - r_size AND
-                pixel_row <= rock1_y + r_size THEN
-                   rock1_on <= '1';
-            ELSE
-                rock1_on <= '0';
-            END IF;
-        END IF;
-    END PROCESS;
-        
     -- process to draw bat
     -- set bat_on if current pixel address is covered by bat position
     batdraw : PROCESS (bat_x, pixel_row, pixel_col) IS
-        VARIABLE vx, vy : STD_LOGIC_VECTOR (10 DOWNTO 0); -- 9 downto 0
+        VARIABLE vx, vy : STD_LOGIC_VECTOR (10 DOWNTO 0); -- 10 downto 0
     BEGIN
         IF ((pixel_col >= bat_x - bat_w) OR (bat_x <= bat_w)) AND
          pixel_col <= bat_x + bat_w AND
@@ -94,27 +87,35 @@ BEGIN
             bat_on <= '0';
         END IF;
     END PROCESS;
-        
-    -- process to move rocks once every frame (i.e., once every vsync pulse)
-    mrocks : PROCESS
+    
+    -- process to move ball once every frame (i.e., once every vsync pulse)
+    mball : PROCESS
         VARIABLE temp : STD_LOGIC_VECTOR (11 DOWNTO 0);
     BEGIN
         WAIT UNTIL rising_edge(v_sync);
         IF serve = '1' AND game_on = '0' THEN -- test for new serve
             game_on <= '1';
+            ball_x_motion <= ball_speed; -- ADDED add an x-velocity when we serve
             ball_y_motion <= (NOT ball_speed) + 1; -- set vspeed to (- ball_speed) pixels
-            rock1_on_screen <= '1';
+            counter <= counter XOR counter; -- If reset counter goes to 0
+            has_scored <= '0'; -- flag set to 0 to indicate the score and beam can be changed
+            
         ELSIF ball_y <= bsize THEN -- bounce off top wall
             ball_y_motion <= ball_speed; -- set vspeed to (+ ball_speed) pixels
+            has_scored <= '0'; -- flag set to 0 to indicate the score and beam can be changed 
         ELSIF ball_y + bsize >= 600 THEN -- if ball meets bottom wall
             ball_y_motion <= (NOT ball_speed) + 1; -- set vspeed to (- ball_speed) pixels
             game_on <= '0'; -- and make ball disappear
+            bat_w <= bat_w_init; -- If game resets, reset width
+            
         END IF;
         -- allow for bounce off left or right of screen
         IF ball_x + bsize >= 800 THEN -- bounce off right wall
             ball_x_motion <= (NOT ball_speed) + 1; -- set hspeed to (- ball_speed) pixels
+            has_scored <= '0'; -- flag set to 0 to indicate the score and beam can be reset again
         ELSIF ball_x <= bsize THEN -- bounce off left wall
             ball_x_motion <= ball_speed; -- set hspeed to (+ ball_speed) pixels
+            has_scored <= '0'; -- flag set to 0 to indicate the score and beam can be reset again
         END IF;
         -- allow for bounce off bat
         IF (ball_x + bsize/2) >= (bat_x - bat_w) AND
@@ -122,17 +123,12 @@ BEGIN
              (ball_y + bsize/2) >= (bat_y - bat_h) AND
              (ball_y - bsize/2) <= (bat_y + bat_h) THEN
                 ball_y_motion <= (NOT ball_speed) + 1; -- set vspeed to (- ball_speed) pixels
-        END IF;
-        
-        -- rock collision logic
-        IF rock1_y >= 600 THEN 
-           rock1_on_screen <= '0';
-        END IF; 
-        
-        IF rock1_on_screen = '0' THEN 
-            rock1_y <= CONV_STD_LOGIC_VECTOR(0, 11);
-        ELSE
-            rock1_y <= rock1_y + rock_speed;
+                IF has_scored = '0' THEN 
+                counter <= counter + 1; -- IF you bounce off the bat, increase score count by 1
+                bat_w <= bat_w - 1; -- IF you bounce off the bat, also reduce width by increasing count
+                has_scored <= '1'; -- flag set to 1 to indicate the score has gone up once and beam shrunk
+                END IF;
+                
         END IF;
         -- compute next ball vertical position
         -- variable temp adds one more bit to calculation to fix unsigned underflow problems
