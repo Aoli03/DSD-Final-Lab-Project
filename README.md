@@ -45,6 +45,9 @@ We built upon the code provided, and the portions we created, for Lab 6, the Pon
 From Lab 6, we also used our score display code with the 7-segment display.
 We also created eight total obstacles instead of just one ball, which run off the original collision detection and framework, and have the modified behaviors. Over time, the obstacles would also begin to travel more quickly, increasing the difficulty over time.
 
+When implementing random respawns, we initially had an issue where the obstacles would respawn in similar areas and at similar intervals. 
+To counter this, Owen used prime number multiplication to add uniqueness to each spawn.
+
 In order to continuously generate obstacles, we used a formula involving multiple factors, including score, the current position of the car and the obstacle, a prime number identifier, and a mod division:
 ![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/98103091/6a174626-a31d-4507-95e5-4e58a3f4c471)
 This formula chooses new positions for each obstacle when they reappear.
@@ -53,8 +56,6 @@ This formula chooses new positions for each obstacle when they reappear.
 ## Process Summary
 Christopher and Owen did the majority of the programming, Alex's work was on the original GitHub push highlighting ideas for how and where the new functionalities would be implemented and writing ReadMe file for the Repo.
 There were two very different parts of this project's development. Chris originally took a very different direction with the code, creating a thread for each obstacle, and a system that would enable and disable them. Unfortunately, due to complications with how VHDL handles and announces concurrency issues, we went back to a more simplified approach that ran more closely to the original Lab 6, Pong, code.
-
-When implementing the random respawns, we initially had an issue where the obstacles would respawn in similar areas and at similar intervals. To counter this, Owen used prime number multiplication to add uniqueness to each spawn.
 
 <p align="center">
   <img src="https://media.giphy.com/media/VekcnHOwOI5So/giphy.gif" alt="Cat Coding">
