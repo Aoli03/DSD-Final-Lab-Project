@@ -16,10 +16,7 @@ ENTITY pong IS
         ADC_SDATA1 : IN STD_LOGIC;
         ADC_SDATA2 : IN STD_LOGIC;
         btn0 : IN STD_LOGIC; -- button to initiate serve
-        
-        --MUST BE 4 Downto 0
-        raw_ball_speed : IN STD_LOGIC_VECTOR (4 downto 0); -- made as 10 downto 0 to avoid type error in bat_n_ball
-        
+          
         --DISPLAY
 		anode : OUT STD_LOGIC_VECTOR (7 DOWNTO 0); -- Display ID
 		seg : OUT STD_LOGIC_VECTOR (6 DOWNTO 0) -- seven segments
@@ -27,6 +24,8 @@ ENTITY pong IS
 END pong;
 
 ARCHITECTURE Behavioral OF pong IS
+
+    SIGNAL score : STD_LOGIC_VECTOR (23 DOWNTO 0); -- ADDED score of game
     SIGNAL pxl_clk : STD_LOGIC := '0'; -- 25 MHz clock to VGA sync module
     -- internal signals to connect modules
     SIGNAL S_red, S_green, S_blue : STD_LOGIC; --_VECTOR (3 DOWNTO 0);
@@ -37,14 +36,13 @@ ARCHITECTURE Behavioral OF pong IS
     SIGNAL adout : STD_LOGIC_VECTOR (11 DOWNTO 0);
     SIGNAL count : STD_LOGIC_VECTOR (9 DOWNTO 0); -- counter to generate ADC clocks
     
-    SIGNAL score : STD_LOGIC_VECTOR (7 DOWNTO 0); -- ADDED score of game
     -- ADD HEXCOUNT FOR DISPLAY
     COMPONENT hexcount IS
     	PORT (
 		clk_100MHz : IN STD_LOGIC;
 		anode : OUT STD_LOGIC_VECTOR (7 DOWNTO 0);
 		seg : OUT STD_LOGIC_VECTOR (6 DOWNTO 0);
-		score : IN STD_LOGIC_VECTOR(7 downto 0) -- score
+		score : IN STD_LOGIC_VECTOR(23 downto 0) -- score
 	);
 	END COMPONENT;
 	
@@ -65,13 +63,11 @@ ARCHITECTURE Behavioral OF pong IS
             pixel_row : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
             pixel_col : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
             bat_x : IN STD_LOGIC_VECTOR (10 DOWNTO 0);
-            serve : IN STD_LOGIC;
+            start : IN STD_LOGIC;
             red : OUT STD_LOGIC;
             green : OUT STD_LOGIC;
             blue : OUT STD_LOGIC;
-            
-            raw_ball_speed : IN STD_LOGIC_VECTOR(4 downto 0); -- added
-            score : OUT STD_LOGIC_VECTOR(7 downto 0) -- added
+            score : OUT STD_LOGIC_VECTOR(23 downto 0) -- added
         );
     END COMPONENT;
     COMPONENT vga_sync IS
@@ -133,11 +129,10 @@ BEGIN
         pixel_row => S_pixel_row, 
         pixel_col => S_pixel_col, 
         bat_x => batpos, 
-        serve => btn0, 
+        start => btn0, 
         red => S_red, 
         green => S_green, 
         blue => S_blue,
-        raw_ball_speed => raw_ball_speed,
         score => score
     );
     vga_driver : vga_sync
