@@ -59,6 +59,7 @@ Here is our VHDL object entity tree:
 
 ![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/82727581/779deea3-a5a6-4c68-9a5f-ecb9fc0fb7c9)
 
+
 ### Core Changes
 #### Call a Set of 8 Rocks
 - Instantiate 8 Rocks with a uniform size and speed, but independent X and Y-Coordinates.
