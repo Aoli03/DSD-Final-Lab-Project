@@ -60,14 +60,22 @@ To counter this, Owen used prime number multiplication to add uniqueness to each
 
 ![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/82727581/c919065e-cc44-489b-8149-53cd352b94d6)
 
-- AHHHHHHHH
+- **For each of the 8 rocks, there is almost identical code for the code below**
+- Check for collisions with the car. If the rock is within the car's geometry, then the game turns off.
   
 ![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/82727581/ea86322e-3d7d-492f-a5d0-d5010d016e89)
 
+- Check for collisions with the bottom wall. If the rock hits the bottom wall, then turn 'rock_on_screen' to '0' for that rock.
+  
 ![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/82727581/b5458365-5acf-4a4a-b4ba-a90ac9751970)
 
+- If the game is running, and the rock is not on the screen, then spawn it in again at a random start_X.
+ - If it's currently on screen, move it down according to the speed.
+  
 ![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/82727581/2096bc8c-c21b-48f8-9f88-63375488e316)
 
+- Draw the rock
+  
 ![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/82727581/eef0ffc2-7cd1-439c-b064-1963e433dee0)
 
 In order to continuously generate obstacles, we used a formula involving multiple factors, including score, the current position of the car and the obstacle, a prime number identifier, and a mod division:
