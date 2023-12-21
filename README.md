@@ -3,13 +3,16 @@ Group work for Digital System Design, VHDL Projects for Nexys A7-100T FPGAs usin
 
 ## Introduction
 We created a game we are calling _**Evade**_, where you play as a 'car' whose horizontal position is controlled by a potentiometer. 
-* **GOAL:** You must avoid obstacles as you accelerate speeds down a road. 
+* **GOAL:** You must avoid obstacles as you accelerate down a road. 
 * **SCORING:** The 7-segment display on the board increments based on the time spent until the player is hit. 
 * **LOSING:** If the car gets hit by an obstacle, then the game will end.
 * **INITIALIZING:** To start/restart the game, press the center button, _BTNC_, on the board.
 ** Your score will be renewed and you will start at base speed
 
-Attachments needed: 
+## Video of Game
+[![WorkingProject](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fyoutu.be%2FKA-9__TiZo8%3Fsi%3DHlSYueoIqooJYmKL)](https://youtu.be/KA-9__TiZo8?si=HlSYueoIqooJYmKL)
+
+## Attachments needed: 
 * [NI Digilent Nexys A7-100T FPGA Trainer Board](https://store.digilentinc.com/nexys-a7-fpga-trainer-board-recommended-for-ece-curriculum/) 
 * 5 k&Omega; Potentiometer
 * 12-bit [analog-to-digital converter](https://en.wikipedia.org/wiki/Analog-to-digital_converter) (ADC) called [Pmod AD1](https://store.digilentinc.com/pmod-ad1-two-12-bit-a-d-inputs/) [Connected to top pins of Pmod port JA (Section 10 of the [Reference Manual](https://reference.digilentinc.com/_media/reference/programmable-logic/nexys-a7/nexys-a7_rm.pdf))]
@@ -17,8 +20,6 @@ Attachments needed:
 ![knob](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/98103091/550d01d7-49ca-421a-8eb5-8dc8e1025038)
 ![potentiometer](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/98103091/bd074cfc-af65-4608-83c1-67b9f7131356)
 ![adc](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/98103091/afd477de-8d1b-43ec-8c98-96ecb9016d4c)
-## (Video of Game Working)
-[![WorkingProject](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fyoutu.be%2FKA-9__TiZo8%3Fsi%3DHlSYueoIqooJYmKL)](https://youtu.be/KA-9__TiZo8?si=HlSYueoIqooJYmKL)
 
 ## How to run
 1. Create six new source files of file type VHDL called clk_wiz_0, clk_wiz_0_clk_wiz, vga_sync, bat_n_ball, adc_if, and pong
