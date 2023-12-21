@@ -44,17 +44,17 @@ We built upon the code provided, and the portions we created, for Lab 6, the Pon
 - When an object hits the car, instead of incrementing the score counter, it will end the game
 - When an object reaches the bottom of the screen, instead of ending the game, it will respawn in a new location
 
-From Lab 6, we also used our score display code with the 7-segment display.
+From Lab 6, we also used our score display code with the 7-segment display **in Hexadecimal**. _Every frame, your score will increase by 1 but is displayed as a 'count' integer divided by 8 to keep numbers small._
 We also created eight total obstacles instead of just one ball which run off the original collision detection and framework with the modified behaviors. Over time, the obstacles would also begin to travel more quickly, increasing the difficulty.
 When implementing random respawns, we initially had an issue where the obstacles would respawn in similar areas and at similar intervals. 
 To counter this, we used multiplication to add uniqueness to each spawn.
 
 ### Core Changes
 #### Call a Set of 8 Rocks
-- Instantiate 8 Rocks with a uniform size and speed, but independent X and Y-Coordinates
-- Further, we made an STD_LOGIC_VECTOR 'rock_on_screen' which reads '1' on an index if that is on the screen, and '0' if the rock has reached the bottom of the screen
-- 'rock_on' is '1' at an index if the current pixel is looking at that rock, '0' if not
-- When respawning the rocks, we use start_x as a pseudo-random value defined in a process later
+- Instantiate 8 Rocks with a uniform size and speed, but independent X and Y-Coordinates.
+- Further, we made an STD_LOGIC_VECTOR 'rock_on_screen' which reads '1' on an index if that is on the screen, and '0' if the rock has reached the bottom of the screen.
+- 'rock_on' is '1' at an index if the current pixel is looking at that rock, '0' if not.
+- When respawning the rocks, we use start_x as a pseudo-random value defined in a process later.
   
 ![image](https://github.com/Aoli03/DSD-Final-Lab-Project/assets/82727581/9c019665-2c67-4cc6-8fcd-7eea6d16e4be)
 
